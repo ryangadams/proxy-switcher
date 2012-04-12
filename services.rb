@@ -40,7 +40,11 @@ module Services
   
   def Services.bash(on_or_off)
     puts "toggling bash profile - #{on_or_off}"
-    
+    bash_profile = "#{Dir.home}/.bash_profile"
+    proxy_on = 'PROXY_SET="on"'
+    proxy_off = 'PROXY_SET="off"'
+    Services.make_the_change(bash_profile, proxy_on, proxy_off, on_or_off)
+    puts 'run "source ~/.bash_profile" to update environment settings'
   end
   def Services.git(on_or_off)
   end
