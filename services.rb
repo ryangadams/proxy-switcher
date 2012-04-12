@@ -63,6 +63,11 @@ module Services
     `stunnel`
   end
   def Services.location(on_or_off)
+    if on_or_off == :on then
+      `scselect 'BBC On Network'`
+    else
+      `scselect 'BBC Off Network'`
+    end
   end
   
   
