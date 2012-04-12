@@ -1,0 +1,58 @@
+#!/usr/bin/env ruby
+
+puts "Toggling Reith Proxies"
+
+require "optparse"
+require './services'
+
+options = {:default => "args"}
+
+def proxies_on
+  puts "Putting proxies on"
+  Services.toggle_all(:on)
+end
+
+def proxies_off
+  puts "Putting proxies off"
+  Services.toggle_all(:off)
+end
+
+
+
+ARGV.options do |opts|
+  opts.banner = "Usage:  #{File.basename($PROGRAM_NAME)} [OPTIONS] OTHER_ARGS"
+  
+  opts.separator ""
+  opts.separator "Specific Options:"
+  
+  opts.on( "-n", "--on",
+            "Turn proxies on" ) do
+    puts "Turning on proxies"
+    proxies_on
+    exit
+  end
+  
+  opts.on( "-f", "--off",
+            "Turn proxies off" ) do
+    puts "Turning off proxies"
+    proxies_off
+    exit
+  end
+  
+  
+  opts.separator "Common Options:"
+  
+  
+  opts.on( "-h", "--help",
+           "Show this message." ) do
+    puts opts
+    exit
+  end
+  
+  #begin
+    opts.parse!
+  #rescue
+  #  puts opts
+  #  exit
+  #end
+end
