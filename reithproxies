@@ -2,8 +2,9 @@
 
 puts "Toggling Reith Proxies"
 
+require 'pathname'
 require "optparse"
-require './services'
+require File.join(File.dirname(Pathname.new(__FILE__).realpath), *%w[/services.rb])
 
 options = {:default => "args"}
 
