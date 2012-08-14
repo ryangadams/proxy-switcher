@@ -59,10 +59,12 @@ if ARGV.length > 0
   if argv == "on"
 	puts "Turning on proxies"
     proxies_on
+	exit
   end
   if argv == "off"
 	puts "Turning off proxies"
     proxies_off
+	exit
   end
 end
 puts "try 'reithproxies -h' for help"
