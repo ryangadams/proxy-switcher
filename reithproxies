@@ -21,7 +21,7 @@ end
 
 
 ARGV.options do |opts|
-  opts.banner = "Usage:  #{File.basename($PROGRAM_NAME)} [OPTIONS] OTHER_ARGS"
+  opts.banner = "Usage:  #{File.basename($PROGRAM_NAME)} [OPTIONS] on|off\n  Run as 'reithproxies off'"
   
   opts.separator ""
   opts.separator "Specific Options:"
@@ -50,10 +50,19 @@ ARGV.options do |opts|
     exit
   end
   
-  #begin
-    opts.parse!
-  #rescue
-  #  puts opts
-  #  exit
-  #end
+  opts.parse!
 end
+# finally, respond to on or off as the last argument
+# ordinarily you won't get here
+if ARGV.length > 0
+  argv = ARGV.shift.downcase
+  if argv == "on"
+	puts "Turning on proxies"
+    proxies_on
+  end
+  if argv == "off"
+	puts "Turning off proxies"
+    proxies_off
+  end
+end
+puts "try 'reithproxies -h' for help"
