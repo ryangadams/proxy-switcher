@@ -5,10 +5,10 @@ module Services
     File.open("#{filename}.tmp", "w+") do |saved|
       File.foreach("#{filename}") do |line|  
         if on_or_off == :off
-          line = line.gsub(/^#{on_state}/, off_state)
+          line = line.gsub(/^([ \t]*)*#{on_state}/, off_state)
         end
         if on_or_off == :on
-          line = line.gsub(/^#{off_state}/, on_state)
+          line = line.gsub(/^([ \t]*)#{off_state}/, on_state)
         end
         saved.puts(line)
       end
